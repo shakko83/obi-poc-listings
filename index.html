@@ -7,15 +7,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-  :root {
-    --navy: #0D1B2A;
-    --gold: #B8972A;
-    --gold-light: #E8D5A3;
-    --cream: #F9F6F0;
-    --mid: #6B7280;
-    --border: rgba(13,27,42,0.12);
-    --white: #ffffff;
-  }
+  :root { --navy: #0D1B2A; --gold: #B8972A; --gold-light: #E8D5A3; --cream: #F9F6F0; --mid: #6B7280; --border: rgba(13,27,42,0.12); --white: #ffffff; }
   body { font-family: 'DM Sans', sans-serif; background: var(--cream); color: var(--navy); min-height: 100vh; }
   header { background: var(--navy); padding: 0 48px; display: flex; align-items: center; justify-content: space-between; height: 72px; border-bottom: 2px solid var(--gold); }
   .logo { font-family: 'Cormorant Garamond', serif; font-size: 26px; font-weight: 600; color: var(--white); letter-spacing: 0.08em; }
@@ -43,6 +35,7 @@
   .status-badge { position: absolute; top: 16px; right: 16px; font-size: 10px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; padding: 5px 12px; border-radius: 2px; z-index: 2; }
   .status-available { background: rgba(74,222,128,0.15); color: #4ade80; border: 1px solid rgba(74,222,128,0.3); }
   .status-under-offer { background: rgba(184,151,42,0.2); color: var(--gold-light); border: 1px solid rgba(184,151,42,0.4); }
+  .status-let { background: rgba(224,68,68,0.15); color: #f87171; border: 1px solid rgba(224,68,68,0.3); }
   .card-image-label { position: relative; z-index: 2; padding: 20px 24px; font-family: 'Cormorant Garamond', serif; font-size: 34px; font-weight: 300; color: rgba(255,255,255,0.9); line-height: 1; width: 100%; }
   .card-image-label small { display: block; font-family: 'DM Sans', sans-serif; font-size: 11px; font-weight: 400; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gold); margin-bottom: 6px; }
   .card-body { padding: 24px; }
@@ -62,14 +55,9 @@
   .enquire-btn:hover { background: var(--navy); color: var(--white); }
   .data-tag { position: absolute; bottom: 0; left: 0; right: 0; background: rgba(13,27,42,0.85); padding: 8px 24px; font-size: 10px; color: rgba(255,255,255,0.35); letter-spacing: 0.06em; display: flex; align-items: center; justify-content: space-between; z-index: 3; }
   .data-tag span { color: rgba(184,151,42,0.7); }
-  @media (max-width: 768px) {
-    header { padding: 0 20px; }
-    .hero { padding: 40px 20px; }
-    .hero h1 { font-size: 36px; }
-    .main { padding: 40px 20px; }
-    .listings { grid-template-columns: 1fr; }
-    nav { display: none; }
-  }
+  .loading { text-align: center; padding: 80px 0; color: var(--mid); font-size: 14px; font-weight: 300; }
+  .error { text-align: center; padding: 80px 0; color: #f87171; font-size: 14px; }
+  @media (max-width: 768px) { header { padding: 0 20px; } .hero { padding: 40px 20px; } .hero h1 { font-size: 36px; } .main { padding: 40px 20px; } .listings { grid-template-columns: 1fr; } nav { display: none; } }
 </style>
 </head>
 <body>
@@ -90,169 +78,88 @@
   <p>Grade A office accommodation across Manchester city centre and the surrounding business districts.</p>
   <div class="sync-banner">
     <div class="sync-dot"></div>
-    Live data — synced from Zoho CRM · Last updated: <span id="lastSync"></span>
+    Live data — synced from Zoho CRM · Last updated: <span id="lastSync">Loading...</span>
   </div>
 </div>
 
 <div class="main">
   <div class="section-header">
     <div class="section-title">Current Listings</div>
-    <div class="listing-count" id="listingCount">2 properties available</div>
+    <div class="listing-count" id="listingCount"></div>
   </div>
-
   <div class="listings" id="listingsContainer">
-
-    <!-- Listing 1: Riverside House -->
-    <div class="card">
-      <div class="card-image" style="background: #0D1B2A;">
-        <div class="card-image-bg">
-          <svg class="building-svg" viewBox="0 0 400 300" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <rect x="140" y="40" width="120" height="240" fill="white"/>
-            <rect x="150" y="55" width="15" height="20" fill="#0D1B2A"/>
-            <rect x="175" y="55" width="15" height="20" fill="#0D1B2A"/>
-            <rect x="200" y="55" width="15" height="20" fill="#0D1B2A"/>
-            <rect x="225" y="55" width="15" height="20" fill="#0D1B2A"/>
-            <rect x="150" y="85" width="15" height="20" fill="#0D1B2A"/>
-            <rect x="175" y="85" width="15" height="20" fill="#0D1B2A"/>
-            <rect x="200" y="85" width="15" height="20" fill="#0D1B2A"/>
-            <rect x="225" y="85" width="15" height="20" fill="#0D1B2A"/>
-            <rect x="150" y="115" width="15" height="20" fill="#0D1B2A"/>
-            <rect x="175" y="115" width="15" height="20" fill="#0D1B2A"/>
-            <rect x="200" y="115" width="15" height="20" fill="#0D1B2A"/>
-            <rect x="225" y="115" width="15" height="20" fill="#0D1B2A"/>
-            <rect x="150" y="145" width="15" height="20" fill="#0D1B2A"/>
-            <rect x="175" y="145" width="15" height="20" fill="#0D1B2A"/>
-            <rect x="200" y="145" width="15" height="20" fill="#0D1B2A"/>
-            <rect x="225" y="145" width="15" height="20" fill="#0D1B2A"/>
-            <rect x="175" y="220" width="50" height="60" fill="#0D1B2A"/>
-            <rect x="40" y="120" width="80" height="160" fill="white" opacity="0.6"/>
-            <rect x="280" y="100" width="80" height="180" fill="white" opacity="0.4"/>
-          </svg>
-        </div>
-        <div class="status-badge status-available">Available</div>
-        <div class="card-image-label">
-          <small>3rd Floor</small>
-          Riverside House
-        </div>
-        <div class="data-tag">
-          Zoho Record ID: <span>ZH-2024-001</span>
-          &nbsp;|&nbsp; OBIQ Ref: <span>MCR-RH-3F</span>
-        </div>
-      </div>
-      <div class="card-body">
-        <div class="card-meta">
-          <div class="meta-item">
-            <div class="meta-label">Size</div>
-            <div class="meta-value">4,250 sq ft</div>
-          </div>
-          <div class="meta-item">
-            <div class="meta-label">Rent</div>
-            <div class="meta-value highlight">£32.50 psf</div>
-          </div>
-          <div class="meta-item">
-            <div class="meta-label">Lease</div>
-            <div class="meta-value">From 3 yrs</div>
-          </div>
-        </div>
-        <p class="card-description">Fully refurbished Grade A accommodation with panoramic views across the Irwell. Open-plan configuration with perimeter trunking, raised access flooring and LED lighting throughout.</p>
-        <div class="card-features">
-          <span class="feature-tag">Open plan</span>
-          <span class="feature-tag">Raised floors</span>
-          <span class="feature-tag">VRF air con</span>
-          <span class="feature-tag">Cycle store</span>
-          <span class="feature-tag">EV charging</span>
-          <span class="feature-tag">BREEAM Excellent</span>
-        </div>
-        <div class="card-footer">
-          <div class="agent">
-            <strong>James Whitfield</strong>
-            Senior Surveyor · OBI
-          </div>
-          <a class="enquire-btn" href="#">Enquire</a>
-        </div>
-      </div>
-    </div>
-
-    <!-- Listing 2: Aurora Building -->
-    <div class="card">
-      <div class="card-image" style="background: #1a2a3a;">
-        <div class="card-image-bg">
-          <svg class="building-svg" viewBox="0 0 400 300" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <rect x="80" y="60" width="240" height="220" fill="white"/>
-            <rect x="95" y="75" width="20" height="25" fill="#1a2a3a"/>
-            <rect x="125" y="75" width="20" height="25" fill="#1a2a3a"/>
-            <rect x="155" y="75" width="20" height="25" fill="#1a2a3a"/>
-            <rect x="185" y="75" width="20" height="25" fill="#1a2a3a"/>
-            <rect x="215" y="75" width="20" height="25" fill="#1a2a3a"/>
-            <rect x="245" y="75" width="20" height="25" fill="#1a2a3a"/>
-            <rect x="275" y="75" width="20" height="25" fill="#1a2a3a"/>
-            <rect x="95" y="112" width="20" height="25" fill="#1a2a3a"/>
-            <rect x="125" y="112" width="20" height="25" fill="#1a2a3a"/>
-            <rect x="155" y="112" width="20" height="25" fill="#1a2a3a"/>
-            <rect x="185" y="112" width="20" height="25" fill="#1a2a3a"/>
-            <rect x="215" y="112" width="20" height="25" fill="#1a2a3a"/>
-            <rect x="245" y="112" width="20" height="25" fill="#1a2a3a"/>
-            <rect x="275" y="112" width="20" height="25" fill="#1a2a3a"/>
-            <rect x="95" y="149" width="20" height="25" fill="#1a2a3a"/>
-            <rect x="125" y="149" width="20" height="25" fill="#1a2a3a"/>
-            <rect x="155" y="149" width="20" height="25" fill="#1a2a3a"/>
-            <rect x="215" y="149" width="20" height="25" fill="#1a2a3a"/>
-            <rect x="245" y="149" width="20" height="25" fill="#1a2a3a"/>
-            <rect x="275" y="149" width="20" height="25" fill="#1a2a3a"/>
-            <rect x="155" y="220" width="90" height="60" fill="#1a2a3a"/>
-          </svg>
-        </div>
-        <div class="status-badge status-under-offer">Under Offer</div>
-        <div class="card-image-label">
-          <small>5th Floor</small>
-          Aurora Building
-        </div>
-        <div class="data-tag">
-          Zoho Record ID: <span>ZH-2024-002</span>
-          &nbsp;|&nbsp; OBIQ Ref: <span>MCR-AB-5F</span>
-        </div>
-      </div>
-      <div class="card-body">
-        <div class="card-meta">
-          <div class="meta-item">
-            <div class="meta-label">Size</div>
-            <div class="meta-value">6,800 sq ft</div>
-          </div>
-          <div class="meta-item">
-            <div class="meta-label">Rent</div>
-            <div class="meta-value highlight">£37.00 psf</div>
-          </div>
-          <div class="meta-item">
-            <div class="meta-label">Lease</div>
-            <div class="meta-value">From 5 yrs</div>
-          </div>
-        </div>
-        <p class="card-description">Premium top-floor suite with double-height reception and private terrace. Cat A+ fit-out available. Positioned within Spinningfields' most sought-after tower, with uninterrupted city skyline views.</p>
-        <div class="card-features">
-          <span class="feature-tag">Private terrace</span>
-          <span class="feature-tag">Cat A+</span>
-          <span class="feature-tag">24/7 access</span>
-          <span class="feature-tag">Concierge</span>
-          <span class="feature-tag">Fibre ready</span>
-          <span class="feature-tag">EPC A rated</span>
-        </div>
-        <div class="card-footer">
-          <div class="agent">
-            <strong>Sarah Connolly</strong>
-            Director · OBI
-          </div>
-          <a class="enquire-btn" href="#">Enquire</a>
-        </div>
-      </div>
-    </div>
-
+    <div class="loading">Loading listings...</div>
   </div>
 </div>
 
 <script>
-  const now = new Date();
-  const formatted = now.toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' }) + ' · ' + now.toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit' });
-  document.getElementById('lastSync').textContent = formatted;
+  function getBuildingSVG(index) {
+    if (index % 2 === 0) {
+      return '<svg class="building-svg" viewBox="0 0 400 300" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="140" y="40" width="120" height="240" fill="white"/><rect x="150" y="55" width="15" height="20" fill="#0D1B2A"/><rect x="175" y="55" width="15" height="20" fill="#0D1B2A"/><rect x="200" y="55" width="15" height="20" fill="#0D1B2A"/><rect x="225" y="55" width="15" height="20" fill="#0D1B2A"/><rect x="150" y="85" width="15" height="20" fill="#0D1B2A"/><rect x="175" y="85" width="15" height="20" fill="#0D1B2A"/><rect x="200" y="85" width="15" height="20" fill="#0D1B2A"/><rect x="225" y="85" width="15" height="20" fill="#0D1B2A"/><rect x="150" y="115" width="15" height="20" fill="#0D1B2A"/><rect x="175" y="115" width="15" height="20" fill="#0D1B2A"/><rect x="200" y="115" width="15" height="20" fill="#0D1B2A"/><rect x="225" y="115" width="15" height="20" fill="#0D1B2A"/><rect x="150" y="145" width="15" height="20" fill="#0D1B2A"/><rect x="175" y="145" width="15" height="20" fill="#0D1B2A"/><rect x="200" y="145" width="15" height="20" fill="#0D1B2A"/><rect x="225" y="145" width="15" height="20" fill="#0D1B2A"/><rect x="175" y="220" width="50" height="60" fill="#0D1B2A"/><rect x="40" y="120" width="80" height="160" fill="white" opacity="0.6"/><rect x="280" y="100" width="80" height="180" fill="white" opacity="0.4"/></svg>';
+    } else {
+      return '<svg class="building-svg" viewBox="0 0 400 300" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="80" y="60" width="240" height="220" fill="white"/><rect x="95" y="75" width="20" height="25" fill="#1a2a3a"/><rect x="125" y="75" width="20" height="25" fill="#1a2a3a"/><rect x="155" y="75" width="20" height="25" fill="#1a2a3a"/><rect x="185" y="75" width="20" height="25" fill="#1a2a3a"/><rect x="215" y="75" width="20" height="25" fill="#1a2a3a"/><rect x="245" y="75" width="20" height="25" fill="#1a2a3a"/><rect x="275" y="75" width="20" height="25" fill="#1a2a3a"/><rect x="95" y="112" width="20" height="25" fill="#1a2a3a"/><rect x="125" y="112" width="20" height="25" fill="#1a2a3a"/><rect x="155" y="112" width="20" height="25" fill="#1a2a3a"/><rect x="185" y="112" width="20" height="25" fill="#1a2a3a"/><rect x="215" y="112" width="20" height="25" fill="#1a2a3a"/><rect x="245" y="112" width="20" height="25" fill="#1a2a3a"/><rect x="275" y="112" width="20" height="25" fill="#1a2a3a"/><rect x="95" y="149" width="20" height="25" fill="#1a2a3a"/><rect x="125" y="149" width="20" height="25" fill="#1a2a3a"/><rect x="155" y="149" width="20" height="25" fill="#1a2a3a"/><rect x="215" y="149" width="20" height="25" fill="#1a2a3a"/><rect x="245" y="149" width="20" height="25" fill="#1a2a3a"/><rect x="275" y="149" width="20" height="25" fill="#1a2a3a"/><rect x="155" y="220" width="90" height="60" fill="#1a2a3a"/></svg>';
+    }
+  }
+
+  function getStatusClass(status) {
+    const s = status.toLowerCase().replace(/ /g, '-');
+    if (s === 'available') return 'status-available';
+    if (s === 'under-offer') return 'status-under-offer';
+    return 'status-let';
+  }
+
+  function renderCard(listing, index) {
+    const bgColor = index % 2 === 0 ? '#0D1B2A' : '#1a2a3a';
+    const statusClass = getStatusClass(listing.status);
+    const features = listing.features.map(f => '<span class="feature-tag">' + f + '</span>').join('');
+    return '<div class="card">' +
+      '<div class="card-image" style="background:' + bgColor + ';">' +
+        '<div class="card-image-bg">' + getBuildingSVG(index) + '</div>' +
+        '<div class="status-badge ' + statusClass + '">' + listing.status + '</div>' +
+        '<div class="card-image-label"><small>' + listing.floor + '</small>' + listing.buildingName + '</div>' +
+        '<div class="data-tag">Zoho Record ID: <span>' + listing.id + '</span> &nbsp;|&nbsp; OBIQ Ref: <span>' + listing.obiqRef + '</span></div>' +
+      '</div>' +
+      '<div class="card-body">' +
+        '<div class="card-meta">' +
+          '<div class="meta-item"><div class="meta-label">Size</div><div class="meta-value">' + listing.sizeSqFt.toLocaleString('en-GB') + ' sq ft</div></div>' +
+          '<div class="meta-item"><div class="meta-label">Rent</div><div class="meta-value highlight">£' + listing.rentPsf.toFixed(2) + ' psf</div></div>' +
+          '<div class="meta-item"><div class="meta-label">Lease</div><div class="meta-value">From ' + listing.leaseTermMin + ' yrs</div></div>' +
+        '</div>' +
+        '<p class="card-description">' + listing.description + '</p>' +
+        '<div class="card-features">' + features + '</div>' +
+        '<div class="card-footer">' +
+          '<div class="agent"><strong>' + listing.agent + '</strong>' + listing.agentTitle + '</div>' +
+          '<a class="enquire-btn" href="#">Enquire</a>' +
+        '</div>' +
+      '</div>' +
+    '</div>';
+  }
+
+  async function loadListings() {
+    try {
+      const res = await fetch('listings.json?nocache=' + Date.now());
+      if (!res.ok) throw new Error('Failed to load');
+      const data = await res.json();
+
+      const syncDate = new Date(data.lastSync);
+      document.getElementById('lastSync').textContent =
+        syncDate.toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' }) +
+        ' · ' + syncDate.toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit' });
+
+      const available = data.listings.filter(l => l.status.toLowerCase() !== 'let');
+      document.getElementById('listingCount').textContent =
+        available.length + ' propert' + (available.length === 1 ? 'y' : 'ies') + ' available';
+
+      document.getElementById('listingsContainer').innerHTML =
+        data.listings.map((l, i) => renderCard(l, i)).join('');
+    } catch (err) {
+      document.getElementById('listingsContainer').innerHTML =
+        '<div class="error">Unable to load listings. Please try again shortly.</div>';
+      document.getElementById('lastSync').textContent = 'Unavailable';
+    }
+  }
+
+  loadListings();
 </script>
 
 </body>
