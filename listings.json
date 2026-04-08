@@ -1,5 +1,5 @@
 {
-  "lastSync": "2026-04-08T13:21:45.249Z",
+  "lastSync": "2026-04-08T13:24:58.500Z",
   "syncSource": "Zoho CRM",
   "listings": [
     {
@@ -7,9 +7,9 @@
       "obiqRef": "MCR-RH-3F",
       "buildingName": "Riverside House",
       "floor": "3rd Floor",
-      "status": "Available",
-      "sizeSqFt": 3250,
-      "rentPsf": 50,
+      "status": "Under Offer",
+      "sizeSqFt": 5250,
+      "rentPsf": 40,
       "leaseTermMin": 3,
       "description": "Fully refurbished Grade A accommodation with panoramic views across the Irwell. Open-plan configuration with perimeter trunking, raised access flooring and LED lighting throughout.",
       "features": [
