@@ -1,5 +1,5 @@
 {
-  "lastSync": "2026-04-08T09:00:00Z",
+  "lastSync": "2026-04-08T12:44:29.808Z",
   "syncSource": "Zoho CRM",
   "listings": [
     {
@@ -7,12 +7,19 @@
       "obiqRef": "MCR-RH-3F",
       "buildingName": "Riverside House",
       "floor": "3rd Floor",
-      "status": "Available",
+      "status": "Under Offer",
       "sizeSqFt": 4250,
-      "rentPsf": 32.50,
+      "rentPsf": 32,
       "leaseTermMin": 3,
       "description": "Fully refurbished Grade A accommodation with panoramic views across the Irwell. Open-plan configuration with perimeter trunking, raised access flooring and LED lighting throughout.",
-      "features": ["Open plan", "Raised floors", "VRF air con", "Cycle store", "EV charging", "BREEAM Excellent"],
+      "features": [
+        "Open plan",
+        "Raised floors",
+        "VRF air con",
+        "Cycle store",
+        "EV charging",
+        "BREEAM Excellent"
+      ],
       "agent": "James Whitfield",
       "agentTitle": "Senior Surveyor · OBI"
     },
@@ -23,10 +30,17 @@
       "floor": "5th Floor",
       "status": "Under Offer",
       "sizeSqFt": 6800,
-      "rentPsf": 37.00,
+      "rentPsf": 37,
       "leaseTermMin": 5,
       "description": "Premium top-floor suite with double-height reception and private terrace. Cat A+ fit-out available. Positioned within Spinningfields' most sought-after tower, with uninterrupted city skyline views.",
-      "features": ["Private terrace", "Cat A+", "24/7 access", "Concierge", "Fibre ready", "EPC A rated"],
+      "features": [
+        "Private terrace",
+        "Cat A+",
+        "24/7 access",
+        "Concierge",
+        "Fibre ready",
+        "EPC A rated"
+      ],
       "agent": "Sarah Connolly",
       "agentTitle": "Director · OBI"
     }
